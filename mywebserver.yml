@@ -1,7 +1,8 @@
 ---
 - hosts: all
   become: yes
-  tasks:
+  gather_facts: yes
+  tasks: 
   - name: i want to install apache2
     apt:
       name: "{{mywebpackonubuntu}}"
@@ -19,7 +20,7 @@
     yum: 
       name: "{{mywebpackonredhat}}"
       state: present
-    when : ansible_os_family=="RedHat
+    when : ansible_os_family=="RedHat"
 
   - name: i want to start webserver
     service:
